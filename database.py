@@ -31,7 +31,7 @@ finally:
     if connection:
         logger.info("CONECTANDO con la BD --> %s", connection.info.dbname)
         #Ejecutar database.crearTabla() solo una vez para que pueda funcionar el resto del programa
-            #database.crearTabla(connection)
+            #scraper.crearTabla(connection)
         scraper.recorrerArticulos(connection, url_inicio)
         cursor.close()
         logger.info("CERRANDO la conexion con la BD --> %s", connection.info.dbname)
