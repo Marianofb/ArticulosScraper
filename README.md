@@ -10,12 +10,9 @@ Instalar las siguientes bibliotecas de Python:
 - requests
 - beautifulsoup4
 
-Puedes instalarlas usando pip:
+Intalalas usando pip:
 
 pip install psycopg2 requests beautifulsoup4
-
-markdown
-Copy code
 
 ## Configuración de la Base de Datos
 
