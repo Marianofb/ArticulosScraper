@@ -9,6 +9,7 @@ Instalar las siguientes bibliotecas de Python:
 - psycopg2
 - requests
 - beautifulsoup4
+- logging
 
 Intalalas usando pip:
 
