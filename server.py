@@ -1,6 +1,10 @@
 import psycopg2
 import database
 from psycopg2 import Error
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 url_inicio = 'https://www.mindefensa.gob.ve/mindefensa/'
 
@@ -18,19 +22,18 @@ try:
 
     cursor.execute("SELECT version();")
     record = cursor.fetchone()
-    print("Versión del servidor PostgreSQL:", record)
-
+    logger.info("Versión del servidor PostgreSQL: %s", record)
 
 except (Exception, Error) as e:
-    print("Al conectarse a PostgreSQL:", e)
+    logger.error("Al conectarse a PostgreSQL: %s", e)
 
 finally:
     if connection:
-        print("Conectamos con la BD --> " + connection.info.dbname)
+        logger.info("CONECTANDO con la BD --> %s", connection.info.dbname)
         #Ejecutar database.crearTabla() solo una vez para que pueda funcionar el resto del programa
             #database.crearTabla(connection)
         database.recorrerArticulos(connection, url_inicio)
         cursor.close()
-        print("FINALIZAR: cerrar la conexion con la BD --> " + connection.info.dbname)
+        logger.info("CERRANDO la conexion con la BD --> %s", connection.info.dbname)
         connection.close()
 
