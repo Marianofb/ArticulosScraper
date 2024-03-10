@@ -1,28 +1,8 @@
 import psycopg2
-import scraper
+import database
 from psycopg2 import Error
 
-url = 'http://www.mindefensa.gob.ve/mindefensa/2016/06/10/armada-bolivariana-realizo-con-exito-ejercicio-conjunto-patria-chavista-ii-2016/'
-#CAUSA ERROR
-#http://www.mindefensa.gob.ve/mindefensa/2019/12/14/mensaje-del-gj-vladimir-padrino-lopez-con-motivo-de-celebrarse-el-41o-aniversario-del-comando-de-defensa-aeroespacial-integral-codai/
-
-def crearTabla(connection):
-    try:
-        crear_tabla_query = '''
-        CREATE TABLE IF NOT EXISTS  tablaDatos (
-            id SERIAL PRIMARY KEY,
-            titulo TEXT,
-            fecha DATE,
-            contenido TEXT,
-            url TEXT
-        )
-        '''
-        cursor = connection.cursor()
-        cursor.execute(crear_tabla_query)
-        connection.commit()
-
-    except Exception as e:
-        print("ERROR: al crear la tabla", e)
+url_inicio = 'https://www.mindefensa.gob.ve/mindefensa/'
 
 try:
     # Conectarse al servidor PostgreSQL
@@ -42,13 +22,14 @@ try:
 
 
 except (Exception, Error) as e:
-    print("ERROR: al conectarse a PostgreSQL:", e)
+    print("Al conectarse a PostgreSQL:", e)
 
 finally:
     if connection:
-        print("EXTIO: conectamos con la BD --> " + connection.info.dbname)
-        crearTabla(connection)
-        scraper.subirDatos(connection, url)
+        print("Conectamos con la BD --> " + connection.info.dbname)
+        #Ejecutar database.crearTabla() solo una vez para que pueda funcionar el resto del programa
+            #database.crearTabla(connection)
+        database.recorrerArticulos(connection, url_inicio)
         cursor.close()
         print("FINALIZAR: cerrar la conexion con la BD --> " + connection.info.dbname)
         connection.close()
