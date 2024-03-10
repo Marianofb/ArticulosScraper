@@ -31,11 +31,11 @@ El script consta de dos partes principales:
 
 1. **Conexión a la BD**: Conectamos a la BD ingresando los datos en el punto anterior
 
-2. **Crear Tabla de la BD para los Articulos**: Creamos la tabla en el caso de que no exista, sin esta tabla el resto del programa no funciona
+2. **Crear Tabla de la BD para los Articulos**: Creamos la tabla en el caso de que no exista, sin esta tabla el resto del programa no funciona (la tabla contiene --> id, titulo, fecha, contenido, url)
 
 3. **Obtener Lista de Articulos para Scrapear**: Recorremos la pagina de inicio mientras guardamos las "url" de los articulos mas recientes
 
-4. **Subir datos a la BD**: De la lista de articulos que obtuvimos guardamos el titulo, fecha, contenido y la url.
+4. **Subir datos a la BD**: De la lista de articulos que obtuvimos guardamos el titulo, fecha, contenido y la url y lo subimos a la tabla de la BD.
 
 ## Estructura del Código
 
