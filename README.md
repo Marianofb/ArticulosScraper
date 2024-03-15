@@ -27,8 +27,6 @@ Antes de ejecutar el script, asegúrate de tener una base de datos PostgreSQL co
 
 ## Funcionamiento del Script
 
-El script consta de dos partes principales:
-
 1. **Conexión a la BD**: Conectamos a la BD ingresando los datos en el punto anterior
 
 2. **Crear Tabla de la BD para los Articulos**: Creamos la tabla en el caso de que no exista, sin esta tabla el resto del programa no funciona (la tabla contiene --> id, titulo, fecha, contenido, url)
