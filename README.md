@@ -33,7 +33,7 @@ Antes de ejecutar el script, asegúrate de tener una base de datos PostgreSQL co
 
 3. **Obtener Lista de Articulos para Scrapear**: Recorremos la pagina de inicio mientras guardamos las "url" de los articulos mas recientes
 
-4. **Subir datos a la BD**: Recorremos la lista de articulos que obtuvimos, ingresamos a cada url (si no existe en la tabla que creamos/existe en la BD) y del articulo guardamos el titulo, fecha, contenido y la url y lo subimos a la tabla.
+4. **Subir datos a la BD**: Recorremos la lista de articulos que obtuvimos, ingresamos a cada url (si no existe esa url en la tabla que creamos en la BD) y del articulo guardamos el titulo, fecha, contenido y la url y lo subimos a la tabla.
 
 ## Estructura del Código
 
