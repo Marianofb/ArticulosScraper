@@ -1,6 +1,6 @@
 # Scraper de Artículos con PostgreSQL
 
-Este script en Python está diseñado para extraer información de artículos de un sitio web y almacenarla en una base de datos PostgreSQL. Utiliza la biblioteca `psycopg2` para la conexión con la base de datos y `BeautifulSoup` para el scraping del sitio web y poder visualizar en la consola los ultimos datos que guardamos en la BD.
+Este script en Python está diseñado para extraer información de artículos de un sitio web y almacenarla en una base de datos PostgreSQL. Utiliza la biblioteca `psycopg2` para la conexión con la base de datos, `BeautifulSoup` para el scraping del sitio web y `click` para poder visualizar en la consola los ultimos datos que guardamos en la BD.
 
 ## Requisitos
 
