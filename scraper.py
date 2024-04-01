@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-def crearTabla(connection):
+def crearTabla(dB):
     try:
         crear_tabla_query = '''
         CREATE TABLE IF NOT EXISTS  tablaDatos (
@@ -16,14 +16,14 @@ def crearTabla(connection):
             url TEXT
         )
         '''
-        cursor = connection.cursor()
+        cursor = dB.cursor()
         cursor.execute(crear_tabla_query)
-        connection.commit()
+        dB.commit()
 
     except Exception as e:
         logger.error("Al crear la tabla: %s", e)
 
-def recorrerArticulos(connection, url_inicio):
+def recorrerArticulos(dB, url_inicio):
     try:
         pagina = requests.get(url_inicio)
 
@@ -37,17 +37,17 @@ def recorrerArticulos(connection, url_inicio):
                 a = articulo.find('a')
                 url = a.get('href') 
                 
-                if not existeURLBD(connection, url):
-                    subirDatosArticulo(connection, url)
+                if not existeURLDB(dB, url):
+                    subirDatosArticulo(dB, url)
                 else:
                     logger.info("La URL ya existe en la base de datos: %s", url)
 
     except Exception as e:
         logger.error("Al recorrer los artículos: %s", e)
 
-def existeURLBD(connection, url):
+def existeURLDB(dB, url):
     try:
-        cursor = connection.cursor()
+        cursor = dB.cursor()
         cursor.execute("SELECT EXISTS(SELECT 1 FROM tablaDatos WHERE url = %s)", (url,))
         exists = cursor.fetchone()[0]
         cursor.close()
@@ -56,7 +56,7 @@ def existeURLBD(connection, url):
         logger.error("Al verificar la existencia de la URL en la base de datos: %s", e)
         return False
 
-def subirDatosArticulo(connection, url):
+def subirDatosArticulo(dB, url):
     try:
         pagina = requests.get(url)
 
@@ -78,9 +78,9 @@ def subirDatosArticulo(connection, url):
             texto = parrafos[0].text
 
             insert_query = "INSERT INTO tablaDatos (titulo, fecha, contenido, url) VALUES (%s, %s, %s, %s)"
-            cursor = connection.cursor()
+            cursor = dB.cursor()
             cursor.execute(insert_query, (t, fecha, texto, url))
-            connection.commit()
+            dB.commit()
             logger.info("Datos insertados correctamente.")
 
     except Exception as e:
