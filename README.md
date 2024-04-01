@@ -32,7 +32,7 @@ Estos son los datos que establecemos en el config.py y  que vamos a utilizar par
 2. **Crear Tabla de la BD para los Articulos**: Creamos la tabla en el caso de que no exista, sin esta tabla el resto del programa no funciona (la tabla contiene --> id, titulo, fecha, contenido, url)
 3. **Obtener Lista de Articulos para Scrapear**: Recorremos la pagina de inicio mientras guardamos las "url" de los articulos mas recientes
 4. **Subir datos a la BD**: Recorremos la lista de articulos que obtuvimos, ingresamos a cada url (si no existe esa url en la tabla que creamos en la BD) y del articulo guardamos el titulo, fecha, contenido y la url y lo subimos a la tabla.
-5. **Obtener datos de la BD**: Con el comando "python main.py obtenerdatostabla" podemos visualizar en la consola lo que contiene la tabla de la BD
+5. **Visualizar datos de la BD**: Con el comando "python main.py obtenerdatostabla" podemos visualizar en la consola lo que contiene la tabla de la BD
 
 ## Estructura del Código
 
