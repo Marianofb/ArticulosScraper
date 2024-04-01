@@ -31,7 +31,7 @@ def recorrerArticulos(dB, url_inicio):
             soup = BeautifulSoup(pagina.text, 'html.parser')
     
             articulos = soup.find_all("h3", attrs={"class": "vw-post-box-title"})
-            logger.info("Número de artículos encontrados: %d", len(articulos))
+            logger.info("Total de artículos encontrados: %d", len(articulos))
             
             for articulo in articulos:
                 a = articulo.find('a')
