@@ -39,4 +39,4 @@ Estos son los datos que establecemos en el config.py y  que vamos a utilizar par
 - `config.py`: Contiene los datos que nos permiten conectar a la BD.
 - `database.py`: Es el que encarga de establecer la conexión con la base de datos y llamar a las funciones de scraping.
 - `scraper.py`: Contiene las funciones para el scraping del sitio web y la manipulación de la base de datos.
-- `main.py`: Me permite obtener los datos de la tabla de la DB a traves de un comando desde la consola.
+- `main.py`: Me permite visualizar los datos de la tabla de la DB a traves de un comando desde la consola.
